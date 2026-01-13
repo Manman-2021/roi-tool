@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>达人ROI与收入精算器</title>
     
-   <link rel="icon" type="image/png" href="icon.png">
+    <link rel="icon" type="image/png" href="icon.png">
     <link rel="apple-touch-icon" href="icon.png">
 
     <style>
-        /* 全局样式设置 */
+        /* 全局样式 */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Microsoft YaHei', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif;
             background-color: #f0f2f5;
             margin: 0;
             padding: 20px;
@@ -20,19 +20,15 @@
             min-height: 100vh;
             color: #333;
         }
-
-        /* 模拟手机/App的主容器 */
         .app-container {
             width: 100%;
-            max-width: 400px; /* 限制最大宽度，保持App感觉 */
+            max-width: 400px;
             background: #fff;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             overflow: hidden;
             height: fit-content;
         }
-
-        /* 顶部标题栏 */
         header {
             background: #fe2c55;
             color: white;
@@ -40,15 +36,8 @@
             text-align: center;
             font-weight: bold;
             font-size: 16px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-
-        /* 内容区域 */
-        .content {
-            padding: 15px;
-        }
-
-        /* 板块样式 */
+        .content { padding: 15px; }
         .section {
             background: white;
             margin-bottom: 20px;
@@ -57,19 +46,14 @@
             border: 1px solid #eee;
             box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
-
-        /* 板块标题 */
         h3 {
             margin: 0 0 15px 0;
             font-size: 15px;
-            color: #333;
             border-left: 4px solid #fe2c55;
             padding-left: 10px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
         }
-
         .badge {
             background: #e8f5e9;
             color: #2e7d32;
@@ -78,19 +62,13 @@
             border-radius: 10px;
             font-weight: normal;
         }
-
-        /* 输入行布局 */
         .row {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 12px;
         }
-        .row label {
-            font-size: 14px;
-            color: #555;
-            flex: 1;
-        }
+        .row label { font-size: 14px; color: #555; flex: 1; }
         .row input {
             width: 90px;
             padding: 8px;
@@ -99,29 +77,14 @@
             text-align: right;
             font-size: 15px;
             outline: none;
-            transition: 0.2s;
             background: #fafafa;
         }
         .row input:focus {
             border-color: #fe2c55;
             background: #fff;
-            box-shadow: 0 0 0 2px rgba(254, 44, 85, 0.1);
         }
-        .unit {
-            font-size: 13px;
-            color: #999;
-            margin-left: 8px;
-            width: 15px;
-        }
-
-        /* 特殊输入框：成本 */
-        .cost-input {
-            border-color: #ffcccc !important;
-            color: #d32f2f;
-            background-color: #fffafa !important;
-        }
-
-        /* 结果显示区 */
+        .unit { font-size: 13px; color: #999; margin-left: 8px; width: 15px; }
+        .cost-input { border-color: #ffcccc !important; color: #d32f2f; background-color: #fffafa !important; }
         .result-box {
             background: #f8f9fa;
             border: 1px dashed #ddd;
@@ -130,38 +93,14 @@
             margin-top: 15px;
             text-align: center;
         }
-        .result-title {
-            font-size: 13px;
-            color: #666;
-            margin-bottom: 5px;
-        }
         .result-value {
             font-size: 26px;
             font-weight: 800;
             color: #fe2c55;
-            font-family: 'Arial', sans-serif;
         }
-        .sub-result {
-            font-size: 12px;
-            color: #999;
-            margin-top: 5px;
-        }
-
-        /* 分割线 */
-        hr {
-            border: 0;
-            border-top: 1px solid #eee;
-            margin: 10px 0 15px 0;
-        }
-
-        /* 底部版权/提示 */
-        footer {
-            text-align: center;
-            font-size: 12px;
-            color: #bbb;
-            margin-top: 20px;
-            padding-bottom: 10px;
-        }
+        .sub-result { font-size: 12px; color: #999; margin-top: 5px; }
+        hr { border: 0; border-top: 1px solid #eee; margin: 10px 0 15px 0; }
+        footer { text-align: center; font-size: 12px; color: #bbb; margin-top: 20px; padding-bottom: 10px; }
     </style>
 </head>
 <body>
@@ -172,13 +111,12 @@
         <div class="content">
             <div class="section">
                 <h3>🔍 单品投流测算 <span class="badge">板块一</span></h3>
-                
-                <div class="row"><label>1. 商品价格</label><input type="number" id="p1_price" placeholder="0"><span class="unit">元</span></div>
-                <div class="row"><label>2. 佣金率</label><input type="number" id="p1_rate" placeholder="20"><span class="unit">%</span></div>
+                <div class="row"><label>1. 商品价格</label><input type="number" id="p1_price" placeholder=""><span class="unit">元</span></div>
+                <div class="row"><label>2. 佣金率</label><input type="number" id="p1_rate" placeholder=""><span class="unit">%</span></div>
                 <hr>
-                <div class="row"><label>3. 发货前退款率</label><input type="number" id="p1_refund_pre" placeholder="5"><span class="unit">%</span></div>
-                <div class="row"><label>4. 发货后退货率</label><input type="number" id="p1_refund_post" placeholder="30"><span class="unit">%</span></div>
-                <div class="row"><label>5. 佣金提现费率</label><input type="number" id="p1_tax" value="10"><span class="unit">%</span></div>
+                <div class="row"><label>3. 发货前退款率</label><input type="number" id="p1_refund_pre" placeholder=""><span class="unit">%</span></div>
+                <div class="row"><label>4. 发货后退货率</label><input type="number" id="p1_refund_post" placeholder=""><span class="unit">%</span></div>
+                <div class="row"><label>5. 佣金提现费率</label><input type="number" id="p1_tax" placeholder=""><span class="unit">%</span></div>
 
                 <div class="result-box">
                     <div class="result-title">投流保本 ROI (盈亏线)</div>
@@ -190,16 +128,15 @@
             <div class="section">
                 <h3>💰 单场净利润复盘 <span class="badge">板块二</span></h3>
 
-                <div class="row"><label>1. 本场直播 GMV</label><input type="number" id="p2_gmv" placeholder="0"><span class="unit">元</span></div>
-                <div class="row"><label>2. 总退款/退货率</label><input type="number" id="p2_refund_total" placeholder="自动" disabled style="background:#eee; color:#999;"><span class="unit">%</span></div>
+                <div class="row"><label>1. 本场直播 GMV</label><input type="number" id="p2_gmv" placeholder=""><span class="unit">元</span></div>
+                <div class="row"><label>2. 总退款/退货率</label><input type="number" id="p2_refund_total" placeholder="自动" disabled style="background:#eee;"><span class="unit">%</span></div>
                 
-                <div class="row"><label>↳ 发货前退款率</label><input type="number" id="p2_refund_pre" placeholder="10"><span class="unit">%</span></div>
-                <div class="row"><label>↳ 发货后退货率</label><input type="number" id="p2_refund_post" placeholder="30"><span class="unit">%</span></div>
+                <div class="row"><label>↳ 发货前退款率</label><input type="number" id="p2_refund_pre" placeholder=""><span class="unit">%</span></div>
+                <div class="row"><label>↳ 发货后退货率</label><input type="number" id="p2_refund_post" placeholder=""><span class="unit">%</span></div>
                 <hr>
-                <div class="row"><label>4. 计佣金额佣金率</label><input type="number" id="p2_rate" placeholder="20"><span class="unit">%</span></div>
-                <div class="row"><label>5. 提现费率</label><input type="number" id="p2_tax" value="10"><span class="unit">%</span></div>
-                
-                <div class="row"><label style="color:#d32f2f; font-weight:bold;">6. 本场投流费用</label><input type="number" id="p2_ad_cost" placeholder="0" class="cost-input"><span class="unit">元</span></div>
+                <div class="row"><label>4. 计佣金额佣金率</label><input type="number" id="p2_rate" placeholder=""><span class="unit">%</span></div>
+                <div class="row"><label>5. 提现费率</label><input type="number" id="p2_tax" placeholder=""><span class="unit">%</span></div>
+                <div class="row"><label style="color:#d32f2f; font-weight:bold;">6. 本场投流费用</label><input type="number" id="p2_ad_cost" placeholder="" class="cost-input"><span class="unit">元</span></div>
 
                 <div class="result-box" style="border-color: #00b85c; background: #f0f9f4;">
                     <div class="result-title">去除投流后·净利润</div>
@@ -208,16 +145,15 @@
                 </div>
             </div>
 
-            <footer>数据自动保存 · 仅供本地使用</footer>
+            <footer>纯净模式 · 无历史记录</footer>
         </div>
     </div>
 
     <script>
-        // DOM加载完成后执行
         document.addEventListener('DOMContentLoaded', function() {
             const inputs = document.querySelectorAll('input');
             
-            // 简单绑定：只要输入数字就重新计算，不保存历史
+            // 简单绑定：输入即计算，不保存，不读取
             inputs.forEach(input => {
                 input.addEventListener('input', calculateAll);
             });
@@ -225,13 +161,11 @@
             calculateAll();
         });
 
-        // 总计算函数
         function calculateAll() {
             calculateSection1();
             calculateSection2();
         }
 
-        // --- 板块一计算：投流盈亏线 ---
         function calculateSection1() {
             const price = parseFloat(document.getElementById('p1_price').value) || 0;
             const rate = parseFloat(document.getElementById('p1_rate').value) || 0;
@@ -242,29 +176,19 @@
             const validPercent = (1 - (refundPre/100) - (refundPost/100));
             const taxPercent = (1 - (tax/100));
             const commissionPercent = (rate/100);
-
             const finalRatio = validPercent * commissionPercent * taxPercent;
 
             let roi = 0;
-            if (finalRatio > 0) {
-                roi = 1 / finalRatio;
-            }
-
+            if (finalRatio > 0) { roi = 1 / finalRatio; }
             const profitPerOrder = price * finalRatio;
 
             const roiEl = document.getElementById('res_roi');
-            if (roi > 0 && roi < 100) {
-                roiEl.innerText = roi.toFixed(2);
-            } else if (roi >= 100) {
-                roiEl.innerText = "99.9+";
-            } else {
-                roiEl.innerText = "0.00";
-            }
-
+            if (roi > 0 && roi < 100) { roiEl.innerText = roi.toFixed(2); }
+            else if (roi >= 100) { roiEl.innerText = "99.9+"; }
+            else { roiEl.innerText = "0.00"; }
             document.getElementById('res_profit_per_order').innerText = '¥' + profitPerOrder.toFixed(2);
         }
 
-        // --- 板块二计算：单场净利润 ---
         function calculateSection2() {
             const gmv = parseFloat(document.getElementById('p2_gmv').value) || 0;
             const refundPre = parseFloat(document.getElementById('p2_refund_pre').value) || 0;
@@ -277,25 +201,18 @@
 
             const validPercent = (1 - (refundPre/100) - (refundPost/100));
             const realGmv = gmv * validPercent; 
-            
             const commissionPercent = (rate/100);
             const taxPercent = (1 - (tax/100));
-            
             const grossIncome = realGmv * commissionPercent * taxPercent;
             const netProfit = grossIncome - adCost;
 
             const incomeEl = document.getElementById('res_income');
             incomeEl.innerText = '¥' + netProfit.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-
             document.getElementById('res_gross_income').innerText = '¥' + grossIncome.toLocaleString('en-US', {maximumFractionDigits: 0});
 
-            if (netProfit < 0) {
-                incomeEl.style.color = '#d32f2f';
-            } else {
-                incomeEl.style.color = '#00b85c';
-            }
+            if (netProfit < 0) { incomeEl.style.color = '#d32f2f'; }
+            else { incomeEl.style.color = '#00b85c'; }
         }
     </script>
 </body>
 </html>
-
