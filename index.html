@@ -1,75 +1,73 @@
-<!DOCTYPE html>   < !DOCTYPE html>   < !DOCTYPE html>   < !DOCTYPE html><!DOCTYPE html>   < !DOCTYPE html>   < !DOCTYPE html>   < !DOCTYPE html>   < !DOCTYPE html>
-<html lang="zh-CN">   < css长= " zh-CN" >
-<head>   < head>   “标题”。
-    <meta charset="UTF-8">   <meta   元 charset   字符集   字符集="UTF-8"   "UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
-
-（注：此句为 HTML 代码，用于设置网页的视口属性，使其在不同设备上具有良好的显示效果。）
-    <title>达人ROI与收入精算器</title>< title   标题> Expert ROI and Revenue Calculator /title>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>达人ROI与收入精算器</title>
     
-    <link   链接 rel="icon"   "icon" type="image/png" href="icon.png">
-    <link   链接   链接   链接   链接 rel="apple-touch-icon"   " apple-touch-icon" href="icon.png"   "icon.png"   "icon.png"   "icon.png">
+   <link rel="icon" type="image/png" href="icon.png">
+    <link rel="apple-touch-icon" href="icon.png">
 
-          < / html>< / html><style>
+    <style>
         /* 全局样式设置 */
-        body {   身体{
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Microsoft YaHei', sans-serif;字体族：-apple-system, BlinkMacSystemFont, 'Segoe UI'   “Segoe UI”, Roboto, 'Helvetica Neue'   ’Helvetica Neue’, Arial   天线, 'Microsoft YaHei'   “微软YaHei”， 无衬线字体；
-            background-color   背景颜色: #f0f2f5;背景颜色：#f0f2f5
-            margin   保证金: 0;   保证金:0;
-            padding: 20px;   填充:20 px;
-            display: flex;   显示:flex;   display   显示   显示: flex;   display   显示   显示: flex;
-            justify-content: center;   justify-content: center；  居中对齐内容；
-            min-height   最小高度: 100vh;   最小高度:100 vh;
-            color: #333;   颜色:# 333;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Microsoft YaHei', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            color: #333;
         }
 
         /* 模拟手机/App的主容器 */
-        .app-container {   ．容器{
-            width: 100%;   宽度:100%;
-            max-width: 400px; /* 限制最大宽度，保持App感觉 */max-width: 400px; /* Limit the maximum width to maintain the App feel */
-            background: #fff;   背景:# fff;
-            border-radius: 12px;   圆角半径：12 像素；
-            box-shadow   不必: 0 4px 20px rgba(0, 0, 0, 0.08);盒阴影：0 4 像素 20 像素 rgba(0, 0, 0, 0.08)；
-            overflow   溢出: hidden   隐藏的;   溢出:隐藏;
-            height: fit-content;   高度：内容自适应；
+        .app-container {
+            width: 100%;
+            max-width: 400px; /* 限制最大宽度，保持App感觉 */
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            height: fit-content;
         }
 
         /* 顶部标题栏 */
-           标题{header   头   头 {
-               背景：#fe2c5background   背景   背景: #fe2c55;
-            color   颜色: white;   颜色:白色;
-            padding   填充: 15px;   填充:15 px;
-            text-align: center   中心;   text-align:中心;
-            font-weight: bold;   粗细:大胆的;
-            font-size: 16px;   字体大小:16 px;
-            box-shadow   不必: 0 2px 5px rgba(0,0,0,0.1);盒阴影：0 2 像素 5 像素 rgba(0,0,0,0.1)；
+        header {
+            background: #fe2c55;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         /* 内容区域 */
-        .content {   ．{内容
-            padding   填充: 15px;   填充:15 px;
+        .content {
+            padding: 15px;
         }
 
         /* 板块样式 */
-        .section {   ．节{
-            background: white;   背景:白色;
+        .section {
+            background: white;
             margin-bottom: 20px;
-            padding: 15px;   填充:15 px;
+            padding: 15px;
             border-radius: 8px;
-            border: 1px solid #eee;   边框：1 像素宽的实线，颜色为 #eee；
-            box-shadow   不必: 0 2px 8px rgba(0,0,0,0.02);盒阴影：0 2 像素 8 像素 rgba(0,0,0,0.02)；
+            border: 1px solid #eee;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
 
         /* 板块标题 */
         h3 {
-            margin   保证金   保证金: 0 0 15   < !DOCTYPE html   超文本标记语言>px 0;Margin: 0 0 15 < !  px 0;
-            font-size   字体大小: 15px;   font-size   字体大小   字体大小: 15px;  Font size: 15 pixels;
-            color   颜色: #333;   颜色:# 333;   color   颜色: #333; color   颜色: #333;
-            border-left: 4px solid #fe2c55;左边框：4 像素实线，颜色为 #fe2c55；
+            margin: 0 0 15px 0;
+            font-size: 15px;
+            color: #333;
+            border-left: 4px solid #fe2c55;
             padding-left: 10px;
-            display   显示: flex;   显示:flex;   display: flex;  display: flex;
+            display: flex;
             justify-content: space-between;
-            align-items: center   中心;
+            align-items: center;
         }
 
         .badge {
@@ -83,7 +81,7 @@
 
         /* 输入行布局 */
         .row {
-            display: flex;   显示:flex;
+            display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 12px;
@@ -222,7 +220,7 @@
             
             // 1. 从 localStorage 恢复之前输入的数据
             inputs.forEach(input => {
-                const savedValue = localStorage.getItem('roi_tool_' + input.id);   底部内边距：10 像素；
+                const savedValue = localStorage.getItem('roi_tool_' + input.id);
                 if (savedValue !== null) {
                     input.value = savedValue;
                 }
@@ -235,7 +233,7 @@
             });
 
             // 初始化计算一次
-            calculateAll(   " apple-touch-icon"<div class="row"><label>2. 佣金率</label><input type="number" id="p1_rate" placeholder="20"><span class="unit">%</span></div>);
+            calculateAll();
         });
 
         // 总计算函数
@@ -266,10 +264,10 @@
             let roi = 0;
             if (finalRatio > 0) {
                 roi = 1 / finalRatio;
-            }<!DOCTYPE html>   < !DOCTYPE html>   < !DOCTYPE html>   < !DOCTYPE html>
+            }
 
-               "icon.png"// 计算每单净赚   " apple-touch-icon"
-            const    <    < / html>/ html>profitPerOrder = price * finalRatio;
+            // 计算每单净赚
+            const profitPerOrder = price * finalRatio;
 
             // 显示 ROI
             const roiEl = document.getElementById('res_roi');
@@ -324,6 +322,5 @@
             }
         }
     </script>
-</body>   < / body>
-
-</html>   < / html>
+</body>
+</html>
